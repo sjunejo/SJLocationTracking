@@ -21,8 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // set up Location Tracker
         locationTracker = LocationTracker()
-        
-        
+        if (self.window?.rootViewController is ViewController){
+          locationTracker!.viewControllerDelegate = (self.window?.rootViewController as! ViewController)
+        }
+        locationTracker!.requestPermissions()
         return true
     }
 
