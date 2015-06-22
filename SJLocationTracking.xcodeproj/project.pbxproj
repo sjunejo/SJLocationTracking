@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		690082F71B333E70002AF9D2 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690082F61B333E70002AF9D2 /* LocationTracker.swift */; };
+		695FF87A1B372FB200706A33 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695FF8791B372FB200706A33 /* Constants.swift */; };
 		69ECB4CA1B31E4600055EF4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ECB4C91B31E4600055EF4A /* AppDelegate.swift */; };
 		69ECB4CD1B31E4600055EF4A /* SJLocationTracking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69ECB4CB1B31E4600055EF4A /* SJLocationTracking.xcdatamodeld */; };
 		69ECB4CF1B31E4600055EF4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ECB4CE1B31E4600055EF4A /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		690082F61B333E70002AF9D2 /* LocationTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracker.swift; sourceTree = "<group>"; };
+		695FF8791B372FB200706A33 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		69ECB4C41B31E4600055EF4A /* SJLocationTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SJLocationTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69ECB4C81B31E4600055EF4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69ECB4C91B31E4600055EF4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				69ECB4CB1B31E4600055EF4A /* SJLocationTracking.xcdatamodeld */,
 				69ECB4C71B31E4600055EF4A /* Supporting Files */,
 				690082F61B333E70002AF9D2 /* LocationTracker.swift */,
+				695FF8791B372FB200706A33 /* Constants.swift */,
 			);
 			path = SJLocationTracking;
 			sourceTree = "<group>";
@@ -167,6 +170,11 @@
 				TargetAttributes = {
 					69ECB4C31B31E4600055EF4A = {
 						CreatedOnToolsVersion = 6.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					69ECB4DB1B31E4610055EF4A = {
 						CreatedOnToolsVersion = 6.3;
@@ -218,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				695FF87A1B372FB200706A33 /* Constants.swift in Sources */,
 				69ECB4CF1B31E4600055EF4A /* ViewController.swift in Sources */,
 				690082F71B333E70002AF9D2 /* LocationTracker.swift in Sources */,
 				69ECB4CD1B31E4600055EF4A /* SJLocationTracking.xcdatamodeld in Sources */,

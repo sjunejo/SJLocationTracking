@@ -9,16 +9,13 @@
 import UIKit
 
 protocol ViewControllerDelegate {
-    
     func showLocationServicesAlert()
-    
 }
 
 class ViewController: UIViewController, ViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -28,7 +25,12 @@ class ViewController: UIViewController, ViewControllerDelegate {
     }
     
     func showLocationServicesAlert() {
-        let locationServicesAlertController = UIAlertController()
+        let locationServicesAlertController = UIAlertController(title: Constants.UIAlertViewControllerStrings.locationServicesUnavailableTitle,
+          
+        message: Constants.UIAlertViewControllerStrings.locationServicesUnavailableMessage,
+        preferredStyle: UIAlertControllerStyle.Alert)
+      
+        locationServicesAlertController.addAction(UIAlertAction(title: Constants.UIAlertViewControllerStrings.ok, style: .Default, handler: nil))
     }
 
 
