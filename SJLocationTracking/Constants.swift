@@ -18,4 +18,15 @@ struct Constants {
     static let cancel: String = "Cancel"
   }
   
+  struct locationDataKeys {
+    static let locationLongitude = "Longitude"
+    static let locationLatitute = "Latitude"
+    static let locationHorizontalAccuracy = "Horizontal Accuracy"
+    static let locationTimestamp = "Timestamp"
+  }
+  
+  struct tableViewLocationDataKeys {
+    static let tableViewCellIdentifier = "cell_a"
+  }
+  
 }

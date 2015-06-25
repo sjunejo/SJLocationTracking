@@ -45,15 +45,12 @@ class LocationTracker: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        println(status)
-        println("Okay")
         if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
           startLocationTracking()
       }
     }
   
   func startLocationTracking(){
-    println("Location manager ready to go")
     manager!.delegate = self
     manager!.startUpdatingLocation()
   }
@@ -61,8 +58,14 @@ class LocationTracker: NSObject, CLLocationManagerDelegate {
   // Called when a new location is received
   func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
     
+      // Take salient pieces of location data and display them in text view
+      var locationDictonary: OrderedDictionary = OrderedDictionary<String, String>()
+      locationDictonary[Constants.locationDataKeys.locationHorizontalAccuracy] = newLocation.horizontalAccuracy.description
+      locationDictonary[Constants.locationDataKeys.locationLatitute] = newLocation.coordinate.latitude.description
+      locationDictonary[Constants.locationDataKeys.locationLongitude] = newLocation.coordinate.longitude.description
+      locationDictonary[Constants.locationDataKeys.locationTimestamp] = newLocation.timestamp.description
       println("New location: \(newLocation.description)")
-    
+      viewControllerDelegate?.updateUI(locationDictonary)
   }
     
 }
