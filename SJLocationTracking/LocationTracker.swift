@@ -59,6 +59,8 @@ class LocationTracker: NSObject, CLLocationManagerDelegate {
   func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
     
       // Take salient pieces of location data and display them in text view
+    var locationDataObject = [NSManagedObject]()
+    
     var locationDataArray:[(typeOfData: String, value: String)] = []
     locationDataArray.append(typeOfData: Constants.locationDataKeys.locationHorizontalAccuracy, value: newLocation.horizontalAccuracy.description)
     locationDataArray.append(typeOfData: Constants.locationDataKeys.locationLatitute, value: newLocation.coordinate.latitude.description)
@@ -67,7 +69,7 @@ class LocationTracker: NSObject, CLLocationManagerDelegate {
   
     
       println("New location: \(newLocation.description)")
-      viewControllerDelegate?.updateUI(locationDataArray)
+      viewControllerDelegate?.updateUIAndSaveLocationData(locationDataArray)
   }
     
 }

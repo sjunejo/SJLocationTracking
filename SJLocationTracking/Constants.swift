@@ -18,6 +18,10 @@ struct Constants {
     static let cancel: String = "Cancel"
   }
   
+  struct coreData {
+    static let locationEntity = "SJLocation"
+  }
+  
   struct locationDataKeys {
     static let locationLongitude = "Longitude"
     static let locationLatitute = "Latitude"
