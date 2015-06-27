@@ -59,13 +59,15 @@ class LocationTracker: NSObject, CLLocationManagerDelegate {
   func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
     
       // Take salient pieces of location data and display them in text view
-      var locationDictonary: OrderedDictionary = OrderedDictionary<String, String>()
-      locationDictonary[Constants.locationDataKeys.locationHorizontalAccuracy] = newLocation.horizontalAccuracy.description
-      locationDictonary[Constants.locationDataKeys.locationLatitute] = newLocation.coordinate.latitude.description
-      locationDictonary[Constants.locationDataKeys.locationLongitude] = newLocation.coordinate.longitude.description
-      locationDictonary[Constants.locationDataKeys.locationTimestamp] = newLocation.timestamp.description
+    var locationDataArray:[(typeOfData: String, value: String)] = []
+    locationDataArray.append(typeOfData: Constants.locationDataKeys.locationHorizontalAccuracy, value: newLocation.horizontalAccuracy.description)
+    locationDataArray.append(typeOfData: Constants.locationDataKeys.locationLatitute, value: newLocation.coordinate.latitude.description)
+    locationDataArray.append(typeOfData: Constants.locationDataKeys.locationLongitude, value: newLocation.coordinate.longitude.description)
+    locationDataArray.append(typeOfData: Constants.locationDataKeys.locationTimestamp, value: newLocation.timestamp.description)
+  
+    
       println("New location: \(newLocation.description)")
-      viewControllerDelegate?.updateUI(locationDictonary)
+      viewControllerDelegate?.updateUI(locationDataArray)
   }
     
 }
