@@ -10,11 +10,22 @@
 import Foundation
 import CoreLocation
 import UIKit
+import CoreData
 
-class LocationTracker: NSObject, CLLocationManagerDelegate {
+protocol SJLocationTrackerDelegate {
+
+  func getStoredLocationData()->[(NSManagedObject)]?
+  func attemptedToSendLocationData(sentSuccessfully: Bool)
+}
+
+class LocationTracker: NSObject, CLLocationManagerDelegate, SJLocationTrackerDelegate {
     
     var manager: CLLocationManager?
     var viewControllerDelegate: ViewControllerDelegate?
+  
+    var httpController: SJHttpController?
+  
+    var databaseController: DatabaseController?
   
     var locationTrackerAccuracy: CLLocationAccuracy? {
       set {
@@ -25,6 +36,18 @@ class LocationTracker: NSObject, CLLocationManagerDelegate {
         return manager?.desiredAccuracy
       }
     }
+  
+    override init() {
+      httpController = SJHttpController()
+      
+      let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+      let managedContext = appDelegate.managedObjectContext!
+      
+      let locationDataEntity = NSEntityDescription.entityForName(Constants.coreData.locationEntity, inManagedObjectContext: managedContext)
+
+      databaseController = DatabaseController(managedObjectContext: managedContext)
+    }
+  
   
     func requestPermissions()-> Bool{
         manager = CLLocationManager()
@@ -52,6 +75,7 @@ class LocationTracker: NSObject, CLLocationManagerDelegate {
   
   func startLocationTracking(){
     manager!.delegate = self
+    manager!.pausesLocationUpdatesAutomatically = false
     manager!.startUpdatingLocation()
   }
   
@@ -59,8 +83,6 @@ class LocationTracker: NSObject, CLLocationManagerDelegate {
   func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
     
       // Take salient pieces of location data and display them in text view
-    var locationDataObject = [NSManagedObject]()
-    
     var locationDataArray:[(typeOfData: String, value: String)] = []
     locationDataArray.append(typeOfData: Constants.locationDataKeys.locationHorizontalAccuracy, value: newLocation.horizontalAccuracy.description)
     locationDataArray.append(typeOfData: Constants.locationDataKeys.locationLatitute, value: newLocation.coordinate.latitude.description)
@@ -69,7 +91,16 @@ class LocationTracker: NSObject, CLLocationManagerDelegate {
   
     
       println("New location: \(newLocation.description)")
-      viewControllerDelegate?.updateUIAndSaveLocationData(locationDataArray)
+      databaseController?.saveData(locationDataArray)
+      viewControllerDelegate?.updateUI(locationDataArray)
   }
+  
+  func attemptedToSendLocationData(sentSuccessfully: Bool){
     
+  }
+  
+  func getStoredLocationData() -> [(NSManagedObject)]?{
+    return nil
+  }
+  
 }

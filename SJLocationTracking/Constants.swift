@@ -33,4 +33,10 @@ struct Constants {
     static let tableViewCellIdentifier = "cell_a"
   }
   
+  struct sendLocationDataInterval {
+    static let locationDataIntervalSmall: Double = 60
+    static let locationDataIntervalMedium: Double = 360
+    static let locationDataIntervalBig: Double = 720
+  }
+  
 }

@@ -12,7 +12,7 @@ import CoreData
 protocol ViewControllerDelegate {
   func showLocationServicesAlert()
   
-  func updateUIAndSaveLocationData(newLocationDataArray: [(typeOfData: String, value: String)])
+  func updateUI(newLocationDataArray: [(typeOfData: String, value: String)])
 }
 
 class ViewController: UIViewController, ViewControllerDelegate, UITableViewDataSource, UITableViewDelegate {
@@ -42,27 +42,10 @@ class ViewController: UIViewController, ViewControllerDelegate, UITableViewDataS
         locationServicesAlertController.addAction(UIAlertAction(title: Constants.UIAlertViewControllerStrings.ok, style: .Default, handler: nil))
     }
 
-  func updateUIAndSaveLocationData(newLocationDataArray: [(typeOfData: String, value: String)]) {
+  func updateUI(newLocationDataArray: [(typeOfData: String, value: String)]) {
     dispatch_async(dispatch_get_main_queue()){
       self.locationDataArray = newLocationDataArray
       self.tableViewLocationData.reloadData()
-      
-      /* Arrays in Swift are pass-by-value, so I don't want
-       to make a separate for that */
-      let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-      let managedContext = appDelegate.managedObjectContext!
- 
-      let locationDataEntity = NSEntityDescription.entityForName(Constants.coreData.locationEntity, inManagedObjectContext: managedContext)
-      
-      for (typeOfData: String, value: String) in self.locationDataArray {
-        locationDataEntity?.setValue(value, forKey: typeOfData)
-      }
-
-      var error: NSError?
-      if !managedContext.save(&error){
-        println("Could not save \(error), \(error?.userInfo)")
-      }
-      
     }
   }
   
