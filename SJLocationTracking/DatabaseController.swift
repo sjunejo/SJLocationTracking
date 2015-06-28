@@ -19,11 +19,10 @@ class DatabaseController {
   
   func saveData(locationDataArray: [(typeOfData: String, value: String)]){
     dispatch_async(dispatch_get_main_queue()){
-      println("Saving location data...")
+      //println("Saving location data...")
       
       let locationDataEntity = NSManagedObject(entity: NSEntityDescription.entityForName(Constants.coreData.locationEntity, inManagedObjectContext: self.managedObjectContext!)!, insertIntoManagedObjectContext: self.managedObjectContext)
-      //let locationDataEntity = NSManage(Constants.coreData.locationEntity,   inManagedObjectContext: self.managedObjectContext!)
-    
+     
       for (typeOfData: String, value: String) in locationDataArray {
         locationDataEntity.setValue(value, forKey: typeOfData.lowercaseString.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil))
         
@@ -36,7 +35,10 @@ class DatabaseController {
     }
   }
   
-  
+  func getData()->[(NSManagedObjectContext)] {
+    var locationDataObjects: [(NSManagedObjectContext)]? = nil
+    return locationDataObjects!
+  }
   
   
   

@@ -34,7 +34,7 @@ struct Constants {
   }
   
   struct sendLocationDataInterval {
-    static let locationDataIntervalSmall: Double = 60
+    static let locationDataIntervalSmall: Double = 5
     static let locationDataIntervalMedium: Double = 360
     static let locationDataIntervalBig: Double = 720
   }

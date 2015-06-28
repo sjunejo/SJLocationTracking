@@ -90,7 +90,7 @@ class LocationTracker: NSObject, CLLocationManagerDelegate, SJLocationTrackerDel
     locationDataArray.append(typeOfData: Constants.locationDataKeys.locationTimestamp, value: newLocation.timestamp.description)
   
     
-      println("New location: \(newLocation.description)")
+      // println("New location: \(newLocation.description)")
       databaseController?.saveData(locationDataArray)
       viewControllerDelegate?.updateUI(locationDataArray)
   }

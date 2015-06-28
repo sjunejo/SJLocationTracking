@@ -8,12 +8,13 @@
 
 import Foundation
 
-class SJHttpController {
+class SJHttpController: NSObject {
   
   var locationTrackerDelegate: SJLocationTrackerDelegate?
   
-  init() {
-      startSendLocationDataTask()
+  override init() {
+    super.init()
+    startSendLocationDataTask()
   }
   
   func setDelegate(locationTracker: SJLocationTrackerDelegate){
@@ -21,12 +22,11 @@ class SJHttpController {
   }
   
   func startSendLocationDataTask(){
-    NSTimer.scheduledTimerWithTimeInterval(Constants.sendLocationDataInterval.locationDataIntervalMedium as Double, target: self, selector: Selector("sendStoredLocationData"), userInfo: nil, repeats: true)
+    NSTimer.scheduledTimerWithTimeInterval(Constants.sendLocationDataInterval.locationDataIntervalSmall as Double, target: self, selector: Selector("sendStoredLocationData"), userInfo: nil, repeats: true)
   }
   
   func sendStoredLocationData(){
-    print("Sending location data")
-    
+    print("SENDING LOCATION DATA")
   }
   
   
