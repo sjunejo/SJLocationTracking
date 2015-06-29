@@ -10,11 +10,10 @@
 import Foundation
 import CoreLocation
 import UIKit
-import CoreData
 
 protocol SJLocationTrackerDelegate {
 
-  func getStoredLocationData()->[(NSManagedObject)]?
+  func getStoredLocationDataAsJSONString()->[(String)]?
   func attemptedToSendLocationData(sentSuccessfully: Bool)
 }
 
@@ -43,8 +42,6 @@ class LocationTracker: NSObject, CLLocationManagerDelegate, SJLocationTrackerDel
       let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
       let managedContext = appDelegate.managedObjectContext!
       
-      let locationDataEntity = NSEntityDescription.entityForName(Constants.coreData.locationEntity, inManagedObjectContext: managedContext)
-
       databaseController = DatabaseController(managedObjectContext: managedContext)
     }
   
@@ -99,7 +96,15 @@ class LocationTracker: NSObject, CLLocationManagerDelegate, SJLocationTrackerDel
     
   }
   
-  func getStoredLocationData() -> [(NSManagedObject)]?{
+  func getStoredLocationDataAsJSONString() -> [(String)]?{
+    
+    let storedLocationData = databaseController?.getStoredLocationData() as [SJLocation]?
+    if (storedLocationData != nil){
+      
+      
+    }
+    
+    
     return nil
   }
   

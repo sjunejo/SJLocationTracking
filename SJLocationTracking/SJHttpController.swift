@@ -25,8 +25,14 @@ class SJHttpController: NSObject {
     NSTimer.scheduledTimerWithTimeInterval(Constants.sendLocationDataInterval.locationDataIntervalSmall as Double, target: self, selector: Selector("sendStoredLocationData"), userInfo: nil, repeats: true)
   }
   
+  /* Get JSON string from LocationTracker
+  / because there's no real point in
+  / Having the HttpController worry about Database stuff
+  */
   func sendStoredLocationData(){
-    print("SENDING LOCATION DATA")
+    let jsonLocationData = locationTrackerDelegate?.getStoredLocationDataAsJSONString()
+    
+    print(jsonLocationData)
   }
   
   

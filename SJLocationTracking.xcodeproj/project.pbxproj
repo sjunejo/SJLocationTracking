@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6901CDA21B41D2580090C168 /* SJLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6901CDA11B41D2580090C168 /* SJLocation.swift */; };
 		694BB2EB1B405E9B00EC2DA4 /* LocationTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694BB2EA1B405E9B00EC2DA4 /* LocationTracker.swift */; };
 		695FF87A1B372FB200706A33 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695FF8791B372FB200706A33 /* Constants.swift */; };
 		69BBA87F1B4019E3000F6502 /* SJHttpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BBA87E1B4019E3000F6502 /* SJHttpController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6901CDA11B41D2580090C168 /* SJLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SJLocation.swift; path = ../SJLocation.swift; sourceTree = "<group>"; };
 		694BB2EA1B405E9B00EC2DA4 /* LocationTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTracker.swift; sourceTree = "<group>"; };
 		695FF8791B372FB200706A33 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		69BBA87E1B4019E3000F6502 /* SJHttpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJHttpController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		69ECB4C61B31E4600055EF4A /* SJLocationTracking */ = {
 			isa = PBXGroup;
 			children = (
+				6901CDA11B41D2580090C168 /* SJLocation.swift */,
 				694BB2EA1B405E9B00EC2DA4 /* LocationTracker.swift */,
 				69ECB4C91B31E4600055EF4A /* AppDelegate.swift */,
 				69ECB4CE1B31E4600055EF4A /* ViewController.swift */,
@@ -308,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69BBA87F1B4019E3000F6502 /* SJHttpController.swift in Sources */,
+				6901CDA21B41D2580090C168 /* SJLocation.swift in Sources */,
 				695FF87A1B372FB200706A33 /* Constants.swift in Sources */,
 				69ECB4CF1B31E4600055EF4A /* ViewController.swift in Sources */,
 				69ECB4CD1B31E4600055EF4A /* SJLocationTracking.xcdatamodeld in Sources */,
