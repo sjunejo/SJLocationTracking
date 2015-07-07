@@ -2,6 +2,7 @@
 //  DatabaseController.swift
 //  SJLocationTracking
 //
+//
 //  Created by Sadruddin Junejo on 28/06/2015.
 //  Copyright (c) 2015 SJunejo. All rights reserved.
 //
@@ -24,7 +25,7 @@ class DatabaseController {
       
       /*
        * Note: Using a bit of a non-standard approach, working with 
-       * NSManagedObjects as opposed to the SJLocation class. 
+       * NSManagedObjects to *store* data as opposed to the SJLocation class. 
        * However, this method is easier for saving the location data specifically.
        * (Using the key value pairings that also have use in the UI)
        */

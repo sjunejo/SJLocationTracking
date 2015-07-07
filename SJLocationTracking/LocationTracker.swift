@@ -2,7 +2,8 @@
 //  LocationTracker.swift
 //  SJLocationTracking
 //
-//  Collects location data
+//  Main unit for collecting location data and interacting
+//  with database.
 //  Created by Sadruddin Junejo on 18/06/2015.
 //  Copyright (c) 2015 SJunejo. All rights reserved.
 //
@@ -85,12 +86,12 @@ class LocationTracker: NSObject, CLLocationManagerDelegate, SJLocationTrackerDel
     locationDataArray.append(typeOfData: Constants.locationDataKeys.locationLatitute, value: newLocation.coordinate.latitude.description)
     locationDataArray.append(typeOfData: Constants.locationDataKeys.locationLongitude, value: newLocation.coordinate.longitude.description)
     locationDataArray.append(typeOfData: Constants.locationDataKeys.locationTimestamp, value: newLocation.timestamp.description)
-  
     
       // println("New location: \(newLocation.description)")
       databaseController?.saveData(locationDataArray)
       viewControllerDelegate?.updateUI(locationDataArray)
   }
+  
   
   func attemptedToSendLocationData(sentSuccessfully: Bool){
     
@@ -101,9 +102,9 @@ class LocationTracker: NSObject, CLLocationManagerDelegate, SJLocationTrackerDel
     let storedLocationData = databaseController?.getStoredLocationData() as [SJLocation]?
     if (storedLocationData != nil){
       
+      // Will need to convert SJLocation object to JSONString
       
     }
-    
     
     return nil
   }

@@ -2,6 +2,7 @@
 //  SJHttpController.swift
 //  SJLocationTracking
 //
+//  Interacts with web service to store location data.
 //  Created by Sadruddin Junejo on 28/06/2015.
 //  Copyright (c) 2015 SJunejo. All rights reserved.
 //

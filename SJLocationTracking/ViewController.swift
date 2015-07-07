@@ -49,7 +49,6 @@ class ViewController: UIViewController, ViewControllerDelegate, UITableViewDataS
     }
   }
   
-  
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
