@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class SJHttpController: NSObject {
   
@@ -31,9 +32,11 @@ class SJHttpController: NSObject {
   / Having the HttpController worry about Database stuff
   */
   func sendStoredLocationData(){
-    let jsonLocationData = locationTrackerDelegate?.getStoredLocationDataAsJSONString()
+    let jsonLocationData = locationTrackerDelegate?.getStoredLocationDataAsArrayOfDictionaries()
     
-    print(jsonLocationData)
+    Alamofire.request(.POST, "http://www.google.com", parameters: jsonLocationData)
+    
+    print(jsonLocationData?.description)
   }
   
   

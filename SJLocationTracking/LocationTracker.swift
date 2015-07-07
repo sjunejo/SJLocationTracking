@@ -14,7 +14,7 @@ import UIKit
 
 protocol SJLocationTrackerDelegate {
 
-  func getStoredLocationDataAsJSONString()->[(String)]?
+  func getStoredLocationDataAsArrayOfDictionaries()->[Dictionary<String, String>]?
   func attemptedToSendLocationData(sentSuccessfully: Bool)
 }
 
@@ -97,10 +97,16 @@ class LocationTracker: NSObject, CLLocationManagerDelegate, SJLocationTrackerDel
     
   }
   
-  func getStoredLocationDataAsJSONString() -> [(String)]?{
+  func getStoredLocationDataAsArrayOfDictionaries() -> [Dictionary<String,String>]?{
     
     let storedLocationData = databaseController?.getStoredLocationData() as [SJLocation]?
     if (storedLocationData != nil){
+      var dictionaryOfStoredLocationData: [Dictionary<String, String>] = []
+      
+      for location: SJLocation in storedLocationData! {
+        let keys:Array = Array(location.entity.attributesByName.keys)
+        dictionaryOfStoredLocationData.append(location.dictionaryWithValuesForKeys(keys) as! Dictionary<String, String>)
+      }
       
       // Will need to convert SJLocation object to JSONString
       
